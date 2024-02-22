@@ -17,10 +17,7 @@ public class OrderDetails {
     Long id;
 
     double totalPrice;
-    int totalQuantity;
-
-    @ManyToOne(fetch = FetchType.EAGER)
-    private Order order;
+    int quantity;
 
     @ManyToOne(fetch = FetchType.EAGER)
     private Product product;

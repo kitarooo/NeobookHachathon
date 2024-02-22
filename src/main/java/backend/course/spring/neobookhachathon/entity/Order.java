@@ -5,12 +5,14 @@ import lombok.*;
 import lombok.experimental.FieldDefaults;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter
 @Setter
 @Builder
 @Entity
+@Table(name = "orders")
 @AllArgsConstructor
 @NoArgsConstructor
 @FieldDefaults(level = AccessLevel.PRIVATE)
@@ -25,7 +27,7 @@ public class Order {
     String address;
     String guide;
     double totalPrice;
-    LocalDate createdDate;
+    LocalDateTime createdDate;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.PERSIST)
     List<OrderDetails> orderDetails;

@@ -4,6 +4,7 @@ import backend.course.spring.neobookhachathon.entity.Product;
 import backend.course.spring.neobookhachathon.service.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -23,5 +24,8 @@ public class ProductController {
         return productService.getAll();
     }
 
-
+    @PostMapping("/upload")
+    public String uploadImage(@RequestParam MultipartFile multipartFile, @RequestParam @PathVariable Long id) {
+        return productService.uploadImage(multipartFile, id);
+    }
 }

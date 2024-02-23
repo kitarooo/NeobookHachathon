@@ -25,6 +25,6 @@ public class ProductService {
 
     public Product checkProductOnExistAndReturn(Long id) {
         return productRepository.findAllById(id).orElseThrow(
-                () -> new NotFoundException("Product was not found!"));
+                () -> new NotFoundException("Product not found!"));
     }
 }

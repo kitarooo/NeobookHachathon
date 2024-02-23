@@ -4,6 +4,7 @@ import backend.course.spring.neobookhachathon.entity.Category;
 import backend.course.spring.neobookhachathon.service.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -21,5 +22,10 @@ public class CategoryController {
     @GetMapping
     public List<Category> getAll() {
         return categoryService.getAll();
+    }
+
+    @PostMapping("/upload")
+    public String uploadImage(@RequestParam MultipartFile multipartFile, @RequestParam @PathVariable Long id) {
+        return categoryService.uploadImage(multipartFile, id);
     }
 }

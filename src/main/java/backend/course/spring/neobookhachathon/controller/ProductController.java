@@ -1,8 +1,10 @@
 package backend.course.spring.neobookhachathon.controller;
 
+import backend.course.spring.neobookhachathon.dto.response.ProductResponse;
 import backend.course.spring.neobookhachathon.dto.response.ProductSearchResponse;
 import backend.course.spring.neobookhachathon.entity.Product;
 import backend.course.spring.neobookhachathon.service.ProductService;
+import io.swagger.v3.oas.annotations.Operation;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
@@ -21,8 +23,14 @@ public class ProductController {
     }
 
     @GetMapping
+    @Operation(summary = "Для получения всех продуктов")
     public List<Product> getAll() {
         return productService.getAll();
+    }
+
+    @GetMapping("{id}")
+    public ProductResponse getById(@PathVariable Long id) {
+        return productService.getById(id);
     }
 
     @PostMapping("/upload")

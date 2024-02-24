@@ -1,5 +1,6 @@
 package backend.course.spring.neobookhachathon.service;
 
+import backend.course.spring.neobookhachathon.dto.response.ProductResponse;
 import backend.course.spring.neobookhachathon.dto.response.ProductSearchResponse;
 import backend.course.spring.neobookhachathon.entity.Product;
 import backend.course.spring.neobookhachathon.exception.NotFoundException;
@@ -24,6 +25,18 @@ public class ProductService {
 
     public List<Product> getAll() {
         return productRepository.findAll();
+    }
+
+    public ProductResponse getById(Long id) {
+        Product product = productRepository.findById(id).orElseThrow(() -> new NotFoundException("Product not found!"));
+
+        return ProductResponse.builder()
+                .name(product.getName())
+                .description(product.getDescription())
+                .quantity(product.getQuantity())
+                .price(product.getPrice())
+                .imageUrl(product.getImageUrl())
+                .build();
     }
 
     public Product checkProductOnExistAndReturn(Long id) {

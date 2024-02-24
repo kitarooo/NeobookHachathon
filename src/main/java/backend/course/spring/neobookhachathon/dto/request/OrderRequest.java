@@ -1,8 +1,6 @@
 package backend.course.spring.neobookhachathon.dto.request;
 
 import backend.course.spring.neobookhachathon.dto.OrderDetailsDTO;
-import backend.course.spring.neobookhachathon.entity.OrderDetails;
-import jakarta.persistence.Entity;
 import lombok.*;
 import lombok.experimental.FieldDefaults;
 

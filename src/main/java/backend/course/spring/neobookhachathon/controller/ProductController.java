@@ -1,5 +1,6 @@
 package backend.course.spring.neobookhachathon.controller;
 
+import backend.course.spring.neobookhachathon.dto.response.ProductSearchResponse;
 import backend.course.spring.neobookhachathon.entity.Product;
 import backend.course.spring.neobookhachathon.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -27,5 +28,11 @@ public class ProductController {
     @PostMapping("/upload")
     public String uploadImage(@RequestParam MultipartFile multipartFile, @RequestParam @PathVariable Long id) {
         return productService.uploadImage(multipartFile, id);
+    }
+
+    @GetMapping("/get")
+    public List<ProductSearchResponse> searchAndFilter(@RequestParam String name,
+                                                       @RequestParam String category) {
+        return productService.filterAndSearch(name,category);
     }
 }

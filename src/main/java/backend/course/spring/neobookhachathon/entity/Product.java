@@ -1,5 +1,6 @@
 package backend.course.spring.neobookhachathon.entity;
 
+import backend.course.spring.neobookhachathon.entity.enums.Category;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
@@ -26,8 +27,7 @@ public class Product {
     String imageUrl;
     int quantity;
 
-    @ManyToOne(fetch = FetchType.EAGER)
-    @JsonIgnore
+    @Enumerated(EnumType.STRING)
     private Category category;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)

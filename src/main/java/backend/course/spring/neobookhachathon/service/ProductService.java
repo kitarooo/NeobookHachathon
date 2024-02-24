@@ -1,6 +1,6 @@
 package backend.course.spring.neobookhachathon.service;
 
-import backend.course.spring.neobookhachathon.entity.Category;
+import backend.course.spring.neobookhachathon.dto.response.ProductSearchResponse;
 import backend.course.spring.neobookhachathon.entity.Product;
 import backend.course.spring.neobookhachathon.exception.NotFoundException;
 import backend.course.spring.neobookhachathon.repository.ProductRepository;
@@ -37,5 +37,22 @@ public class ProductService {
         productRepository.save(product);
 
         return "Фотография успешно создана!";
+    }
+
+    public List<ProductSearchResponse> filterAndSearch(String name, String category) {
+        if (category == null) {
+            category = "";
+        }
+
+        return productRepository.findByNameAndCategory(name, category).stream().map(this::mapToProductSearchResponse).toList();
+    }
+
+    private ProductSearchResponse mapToProductSearchResponse(Product product) {
+        return ProductSearchResponse.builder()
+                .name(product.getName())
+                .category(product.getCategory())
+                .price(product.getPrice())
+                .imageUrl(product.getImageUrl())
+                .build();
     }
 }

@@ -22,6 +22,7 @@ public class Order {
 
     String name;
     String phoneNumber;
+    @Column(length = 8000)
     String comment;
     String address;
     String guide;

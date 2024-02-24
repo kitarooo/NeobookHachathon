@@ -23,6 +23,7 @@ public class Product {
 
     String name;
     double price;
+    @Column(length = 8000)
     String description;
     String imageUrl;
     int quantity;

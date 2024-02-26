@@ -28,7 +28,7 @@ public class OrderController {
         return orderService.getById(id);
     }
 
-    @GetMapping
+    @GetMapping("/history")
     @Operation(summary = "Для получения истории заказов")
     public List<OrderResponse> getAll() {
         return orderService.getAll();
